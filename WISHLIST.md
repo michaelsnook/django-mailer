@@ -24,23 +24,25 @@ IMPORTANT OBJECTS
 Top-level objects
 -----------------
 
-1. members (the people on the email list who receive emails)
-1. staff (the campaigners / staffers who log in to the system and use it to send mail)
-1. lists (things you can subscribe to or unsubscribe from; subscription lists should also get sub and unsub forms)
-1. mailings (the main content element that campaigners work with)
-1. fromlines (the different people a mailing might come from)
-1. templates (also sometimes called wrappers, these provide the styling for mailings; some are )
-1. links (the things members click on in the emails they get; assume the pages themselves are hosted elsewhere)
+1. mailings (the main content element that campaigners work with) 1,000s
+1. sets (most mailings are one of many within a set; different emails going out on the same day / similar time, about the same moment in the campaign: donors may get one set of tests; signers may get the winner; non-signers may get a totally different series of tests, all on the same day and within the same mailing set) 100s
+1. member (the people on the email list who receive emails) 100,000s
+1. list (things you can subscribe to or unsubscribe from; subscription lists should also get sub and unsub forms) 1s
+1. tag (used for targeting includes and excludes; like lists but invisible to the user, managed at the discretion of the campaigner / data analyst) 10s
+1. fromline (the different people a mailing might come from) 10s
+1. staff (the campaigners / staffers who log in to the system and use it to send mail) 1s
+1. template (also sometimes called wrappers, these provide the styling for mailings; some also include targeting include / exclude directives) 1s
+1. link (the destinations members click on in the emails they get; assume the pages themselves are hosted elsewhere) 100s
 
 Relational and event objects
 ----------------------------
 
-1. member-mailing (when a member receives an instance of a mailing in their inbox)
-1. member-open (when a member opens an email)
-1. member-click (when a member clicks a link in an email)
-1. reply (when a member emails back to info@)
-1. member-list-subscription (when a mailer is subscribed to a list)
-1. member-subscription-actions (when a member gets subscribed or unsubscribed)
+1. member-mailing (when a member receives an instance of a mailing in their inbox, keys to `member` and `mailing`) 10,000,000s
+1. member-open (when a member opens an email, keys to `member`, `mailing`, and maybe `subject-line` if there's an object for that) 10,000,000s
+1. member-click (when a member clicks a link in an email, keys to `member`, `mailing`, and `link`) 1,000,000,000
+1. reply (when a member emails back to info@, keys to `member` and `mailing`) 1,000s
+1. member-list-subscription (one for each member is subscribed to each list they're on, keys to `member` and `list`) 100,000s
+1. member-subscription-events (when a member gets subscribed or unsubscribed; creates a running history whose most recent events essentially produce the contents of `member-list-subscription`s exist, keys to `member` and `list`) 1,000,000s
 
 INTERFACES
 ==========
