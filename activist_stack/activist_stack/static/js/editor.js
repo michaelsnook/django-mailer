@@ -19,7 +19,7 @@ function getExampleRef() {
 /*
  * This function initializes Ace (and Firebase) but nothing else
  */
-function init() {
+function initEditor() {
   //// Initialize Firebase.
 
   var firepadRef = getExampleRef();
@@ -87,11 +87,15 @@ function sendNewContent() {
  * set the change event handler, and focus on the editor.
  */
 $(document).ready(function() {
-  init(); // originally this was window.onload -- not sure why
+  console.log('initEditor');
+  initEditor(); // originally this was window.onload -- not sure why
+  console.log('inited');
   source = $("#email-preview-template").html();
+  console.log(source);
   template = Handlebars.compile(source);
+  console.log(template);
   $target = $('#email-preview-target');
-
+  console.log('done')
   editor.on('change', sendNewContent );
   editor.focus();
 });

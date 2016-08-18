@@ -51,11 +51,32 @@ Thanks for **all you do**, for serious.
     </div>
   </div>
 </div>
+
+{% verbatim %}
+<script id="email-preview-template" type="text/x-handlebars-template">
+  <div class="well email-meta">
+  <h5>from: {{fromline}}</h5>
+  <h5>subject:</h5>
+  {{#each subjects}}
+    <h3>* {{.}}</h3>
+  {{/each}}
+  </div>
+  <div class="well email-content">
+    {{&body}}
+  </div>
+</script>
+{% endverbatim %}
+
 {% endblock %}
 
-{% block page_javascript %}
+{% block javascript %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Tether - a requirement for Bootstrap tooltips -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"
+  integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+<script src="{% static 'js/project.js' %}"></script>
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/ace.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/mode-markdown.js"></script>
