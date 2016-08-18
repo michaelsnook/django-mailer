@@ -55,10 +55,10 @@ node_modules/
 
 # virtual environments
 .env
+ve
 
 # User-uploaded media
 activist_stack/media/
 
 # Hitch directory
 tests/.hitch
-

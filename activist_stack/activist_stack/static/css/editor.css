@@ -1,0 +1,42 @@
+#firepad-container {
+  width: 100%;
+  min-height: 500px; }
+
+div.email-meta h1, div.email-meta h2, div.email-meta h3, div.email-meta h4, div.email-meta h5, div.email-meta h6 {
+  margin: 0.5rem;
+  font-weight: 300; }
+
+div.email-content a {
+  text-decoration: underline; }
+
+/*
+ * This method for fixing independently-scrolling vertical sections has
+ * been shamelessly ripped off from Ben Frain:
+ * https://benfrain.com/independent-scrolling-panels-body-scroll-using-just-css/
+ */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  height: 100px; }
+
+.scroll-container {
+  display: flex;
+  overflow: hidden;
+  height: calc(100vh - 112px);
+  position: relative;
+  width: 100%;
+  backface-visibility: hidden;
+  will-change: overflow; }
+
+.left-half,
+.right-half {
+  overflow: auto;
+  height: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none; }
+
+.nestle {
+  margin-top: -1rem; }

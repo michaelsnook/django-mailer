@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n %}
+
+
+<!-- for when you have an internet connection -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/ace.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/mode-markdown.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/theme-{{ site.ace_theme }}.js"></script>
+<script src="/static/javascripts/js-yaml.min.js"></script>
+<script src="/static/javascripts/marked.min.js"></script>
+<script src="//cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+<link rel="stylesheet" href="//cdn.firebase.com/libs/firepad/1.3.0/firepad.css" />
+<script src="//cdn.firebase.com/libs/firepad/1.3.0/firepad.min.js"></script>
+
+
+<script>
+aceOptions = {
+  maxLines: Infinity,
+  showGutter: false,
+  displayIndentGuides: false,
+  theme: "ace/theme/{{ site.ace_theme }}"
+};
+</script>
+
+<div class="row scroll-container">
+  <div class="left-half col-md-6">
+    <div id="firepad-container">---
+      subjects:
+      - "Outrage in Blurgdoland!"
+      - "You'll never believe it..."
+      - "30 days to save the planet"
+
+      fromline: "Michael Snook &lt;info@awesomemailer.com&gt;"
+
+      notes: "campaign prospecting and subject line test for a new potential campaign. Yesterday in Blurgdoland the governor decided to release all the evil flying monkeys, like from Wizard Of Oz and now they're going to destroy the planet."
+      ---
+
+      Dear { first_name },
+
+      Here is your first bit of text. Now help us save the planet! This is an email so naturally we need to ask you to do things.
+
+      > We make quotes. aww yiss quotes. mhmm. about the importance of clicking on this link.
+
+      **[Click here to do the things right now!](http://google.com)**
+
+      ![](http://captainplanetfoundation.org/wp-content/uploads/2011/11/planeteers-youth.jpg)
+
+      Thanks for **all you do**, for serious.
+
+      -- Michael, and the AwesomeMailer.com team
+
+    </div>
+  </div>
+  <div class="right-half col-md-6">
+    <div id="email-preview-container">
+      <div id="email-preview-target"></div>
+    </div>
+  </div>
+</div>
+
+{% autoescape off %}
+<script id="email-preview-template" type="text/x-handlebars-template">
+  <div class="well email-meta">
+  <h5>from: \{\{fromline\}\}</h5>
+  <h5>subject:</h5>
+  \{\{\#each subjects\}\}
+    <h3>* \{\{.}}</h3>
+  \{\{/each}}
+  </div>
+  <div class="well email-content">
+    \{\{&body}}
+  </div>
+</script>
+{% endautoescape %}

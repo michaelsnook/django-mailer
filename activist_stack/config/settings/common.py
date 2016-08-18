@@ -45,6 +45,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     # custom users app
     'activist_stack.users.apps.UsersConfig',
+    'mailer',
     # Your stuff: custom apps go here
 )
 
