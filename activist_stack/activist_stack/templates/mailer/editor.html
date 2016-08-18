@@ -54,14 +54,16 @@ Thanks for **all you do**, for serious.
 
 {% verbatim %}
 <script id="email-preview-template" type="text/x-handlebars-template">
-  <div class="well email-meta">
-  <h5>from: {{fromline}}</h5>
-  <h5>subject:</h5>
-  {{#each subjects}}
-    <h3>* {{.}}</h3>
+  <div class="card card-block email-meta">
+  <p>from: <strong>{{fromline}}</strong></p>
+  <p>{{ subjects.length }} subjects:</p>
+  <ul class="list-group">
+  {{# each subjects }}
+    <li class="list-group-item">{{.}}</li>
   {{/each}}
+  </ul>
   </div>
-  <div class="well email-content">
+  <div class="card card-block email-content">
     {{&body}}
   </div>
 </script>
